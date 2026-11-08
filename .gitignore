@@ -1,0 +1,11 @@
+dist/
+node_modules/
+.research/
+.impeccable/questions/
+.taste-skill/
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/*.local.json
+*.log
+.DS_Store
+Thumbs.db
