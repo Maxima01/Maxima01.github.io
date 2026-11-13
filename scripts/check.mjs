@@ -55,7 +55,7 @@ try {
   for (const match of css.matchAll(/url\(\s*["']?([^\s"')]+)["']?\s*\)/g)) await checkReference(match[1], cssPath);
 } catch { fail('Missing styles.css.'); }
 
-const scripts = ['script.js', ...(await readdir(join(root, 'scripts'))).filter((file) => file.endsWith('.mjs')).map((file) => `scripts/${file}`)];
+const scripts = ['script.js', 'assets/js/particle-mark.js', ...(await readdir(join(root, 'scripts'))).filter((file) => file.endsWith('.mjs')).map((file) => `scripts/${file}`)];
 for (const file of scripts) {
   const result = spawnSync(process.execPath, ['--check', join(root, file)], { encoding: 'utf8' });
   if (result.status !== 0) fail(`JavaScript syntax check failed: ${file}\n${result.stderr || result.error?.message || ''}`);
