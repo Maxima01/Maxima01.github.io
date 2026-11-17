@@ -5,18 +5,22 @@ const host = document.querySelector('#particle-mark');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let renderer;
 
-if (host) {
+function initializeWhenAllowed() {
+  if (!host || reducedMotion.matches || renderer) return;
   try {
     renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
     initialize();
+    reducedMotion.removeEventListener('change', initializeWhenAllowed);
   } catch {
     // The inline vector keeps the identity intact if WebGL is unavailable.
     renderer?.dispose();
     renderer?.domElement.remove();
+    renderer = null;
     host.removeAttribute('data-rendered');
     host.disabled = true;
-    host.setAttribute('aria-label', 'Red and blue figure-eight mark');
+    host.setAttribute('aria-label', 'Figure-eight mark animation');
     host.title = 'Red and blue figure-eight mark';
+    reducedMotion.removeEventListener('change', initializeWhenAllowed);
   }
 }
 
@@ -71,6 +75,8 @@ function initialize() {
   let phase = .095;
   let previous = null;
   let frame = 0;
+  const frameInterval = 1000 / 30;
+  const frameTolerance = 0.5;
   let paused = false;
   let visible = true;
   let disposed = false;
@@ -94,6 +100,10 @@ function initialize() {
   }
   function tick(now) {
     frame = 0;
+    if (previous !== null && now - previous < frameInterval - frameTolerance) {
+      frame = requestAnimationFrame(tick);
+      return;
+    }
     if (previous !== null) phase = (phase + Math.min(now - previous, 60) / 7600) % 1;
     previous = now;
     render();
@@ -103,11 +113,18 @@ function initialize() {
     cancelAnimationFrame(frame);
     frame = 0;
     previous = null;
-    host.disabled = reducedMotion.matches || contextLost;
-    host.setAttribute('aria-pressed', String(paused || reducedMotion.matches));
-    const label = reducedMotion.matches ? 'Particle animation paused for reduced motion' : paused ? 'Play particle animation' : 'Pause particle animation';
-    host.setAttribute('aria-label', label);
-    host.title = label;
+    const unavailable = reducedMotion.matches || contextLost;
+    const playing = !unavailable && !paused;
+    host.disabled = unavailable;
+    host.setAttribute('aria-pressed', String(playing));
+    host.setAttribute('aria-label', 'Figure-eight mark animation');
+    host.title = reducedMotion.matches
+      ? 'Animation paused for reduced motion'
+      : contextLost
+        ? 'Animation paused until graphics recover'
+        : playing
+          ? 'Pause figure-eight animation'
+          : 'Play figure-eight animation';
     if (disposed || contextLost) return;
     render();
     if (!paused && !reducedMotion.matches && visible && !document.hidden) frame = requestAnimationFrame(tick);
@@ -157,6 +174,11 @@ function initialize() {
   });
   addEventListener('pageshow', event => { if (event.persisted) sync(); });
   resize();
-  host.setAttribute('data-rendered', '');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (!disposed && !contextLost) host.setAttribute('data-rendered', '');
+  }));
   sync();
 }
+
+reducedMotion.addEventListener('change', initializeWhenAllowed);
+initializeWhenAllowed();

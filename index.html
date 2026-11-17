@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Michael Don Alaiza — software developer building practical tools and client websites. Explore Little by Little, SheetShift, Coach JM Prime, Signal Desk, Osmanthus, and my development approach.">
   <meta name="theme-color" content="#7d0c14">
   <meta property="og:title" content="Michael Don Alaiza — Software Developer">
@@ -11,16 +11,42 @@
   <title>Michael Don Alaiza — Software Developer</title>
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="preload" href="./assets/fonts/epilogue-black.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./script.js" defer></script>
-  <script type="module" src="./assets/js/particle-mark.js"></script>
+  <link rel="preload" href="./assets/fonts/epilogue-bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/fonts/epilogue-regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./styles.css?v=20261116-59">
+  <script src="./script.js?v=20261116-61" defer></script>
 </head>
 <body>
+  <section class="portfolio-intro" id="portfolio-intro" role="dialog" aria-modal="true" aria-labelledby="entry-name" aria-describedby="entry-instructions" hidden>
+    <p class="sr-only" id="entry-instructions">Turn on the light to see a brief introduction. The switch makes a quiet click when used. Skip the introduction at any time to enter the portfolio.</p>
+    <p class="sr-only" id="entry-announcement" aria-live="polite" aria-atomic="true"></p>
+    <p class="sr-only" id="entry-transition-status" tabindex="-1"></p>
+    <canvas class="entry-atmosphere" id="entry-atmosphere" aria-hidden="true"></canvas>
+    <div class="entry-inner">
+      <div class="entry-copy">
+        <figure class="entry-portrait">
+          <img src="./assets/images/michael-alaiza.jpg" width="320" height="320" alt="Michael Don Alaiza, smiling in his GitHub profile picture" decoding="async">
+        </figure>
+        <div class="entry-details">
+          <h1 class="entry-name" id="entry-name"><span>Michael Don</span><span>Alaiza</span></h1>
+          <p class="entry-role"><span class="sr-only">Software developer and IT graduate.</span><span class="entry-typed" id="entry-role-text" aria-hidden="true"></span></p>
+          <p class="entry-focus"><span class="sr-only">I start with the problem, learn the system, and shape the experience.</span><span class="entry-typed" id="entry-focus-text" aria-hidden="true"></span></p>
+        </div>
+      </div>
+      <div class="entry-controls">
+        <button class="light-switch" id="light-switch" type="button" aria-pressed="false">
+          <span class="switch-track" aria-hidden="true"><span class="switch-lever"></span></span>
+          <span id="light-switch-label">Turn on the light</span>
+        </button>
+        <button class="entry-skip" id="entry-skip" type="button" aria-keyshortcuts="Escape"><span class="entry-skip-label">Skip intro</span><kbd aria-hidden="true">Esc</kbd></button>
+      </div>
+    </div>
+  </section>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header" id="top">
+  <header class="site-header" id="top" tabindex="-1">
     <div class="header-inner wrap">
     <div class="header-identity">
-      <button class="particle-mark" id="particle-mark" type="button" aria-label="Red and blue figure-eight mark" aria-pressed="false" title="Red and blue figure-eight mark" disabled>
+      <button class="particle-mark" id="particle-mark" type="button" aria-label="Figure-eight mark animation" aria-pressed="false" title="Red and blue figure-eight mark" disabled>
         <svg class="particle-fallback" viewBox="0 0 64 80" aria-hidden="true"><g transform="rotate(-16 32 40)"><path d="M32 40C3 21 17 5 32 10C56 18 45 29 32 40C9 57 15 73 32 70C55 65 48 51 32 40Z"/><circle class="particle-red" cx="23" cy="16" r="4"/><circle class="particle-blue" cx="41" cy="64" r="4"/></g></svg>
       </button>
       <a class="wordmark" href="#top" aria-label="Michael Don Alaiza, home">Michael Don Alaiza<span>Software developer</span></a>
@@ -53,17 +79,21 @@
       <div class="stage-view project-panel" data-panel="work" hidden>
       <div class="stage-heading">
         <p class="stage-title" id="stage-title">Little by Little</p>
-        <p class="stage-kind" id="stage-kind">Web &amp; desktop · In development</p>
+        <p class="stage-kind" id="stage-kind">Web &amp; desktop · In active development</p>
       </div>
       <figure class="stage-figure">
-        <a class="stage-image-link" id="stage-link" href="./assets/images/writing-desk.png" aria-label="Open full-size Little by Little writing desk screenshot">
-          <img id="stage-image" src="./assets/images/writing-desk.png" width="1440" height="900" alt="Little by Little writing desk with story navigation, a manuscript editor, and chapter context" loading="lazy">
-          <span class="stage-image-action">Open full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span>
+        <a class="stage-image-link" id="stage-link" href="./assets/images/writing-desk.png" aria-label="View full image: Little by Little writing desk screenshot">
+          <img id="stage-image" src="./assets/images/writing-desk.png" width="1440" height="900" alt="Little by Little writing desk with story navigation, a manuscript editor, and chapter context" loading="lazy" decoding="async">
+          <span class="stage-image-action">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span>
         </a>
+        <div class="stage-image-fallback" id="stage-image-fallback" role="status" hidden>
+          <p>The preview image could not be loaded.</p>
+          <a id="stage-image-fallback-link" href="#project-writing">Read the Little by Little case study</a>
+        </div>
         <figcaption id="stage-caption">The writing desk, captured from the project’s own interface.</figcaption>
       </figure>
       <nav class="stage-index" aria-label="Jump to a project">
-        <a href="#project-writing" data-preview="project-writing" aria-current="true">Little by Little</a>
+        <a href="#project-writing" data-preview="project-writing" aria-current="location">Little by Little</a>
         <a href="#project-sheetshift" data-preview="project-sheetshift">SheetShift</a>
         <a href="#project-coach" data-preview="project-coach">Coach JM Prime</a>
         <a href="#project-signal" data-preview="project-signal">Signal Desk</a>
@@ -76,8 +106,8 @@
         <p class="panel-lead">A useful tool. A website. A problem worth figuring out.</p>
         <p>I bring system thinking, AI-assisted development, and a quality-assurance mindset to the work.</p>
         <div class="panel-contact-links">
-          <a class="panel-link" href="https://www.linkedin.com/in/michael-don-alaiza-b566ab263/" target="_blank" rel="noopener noreferrer">Find me on LinkedIn <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
-          <a class="panel-link" href="https://github.com/Maxima01" target="_blank" rel="noopener noreferrer">Explore my GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+          <a class="panel-link" href="https://www.linkedin.com/in/michael-don-alaiza-b566ab263/" target="_blank" rel="noopener noreferrer">Find me on LinkedIn <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+          <a class="panel-link" href="https://github.com/Maxima01" target="_blank" rel="noopener noreferrer">Explore my GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
         </div>
         <p class="contact-signature">Michael Don Alaiza<span>Software developer · Maxima01</span></p>
       </div>
@@ -85,19 +115,24 @@
       <div class="stage-footer"><span id="panel-section">About</span><span>Following your reading</span></div>
     </aside>
 
-  <main id="main" class="reading-stage">
+  <main id="main" class="reading-stage" tabindex="-1">
     <section class="about-section wrap" id="about" aria-labelledby="about-title">
-      <div class="about-intro"><h1 id="about-title"><span class="type-line"><span>A little</span></span><span class="type-line"><span>about me.</span></span></h1></div>
+      <div class="about-intro"><h1 id="about-title"><span class="type-line"><span>I build practical,</span></span><span class="type-line"><span>local-first tools.</span></span></h1></div>
       <div class="about-content">
-        <p class="about-lead">I’m Michael Don Alaiza, an Information Technology graduate building useful software and growing as a developer.</p>
-        <p>My work brings together web development, cross-platform applications, and quality assurance. I’m drawn to everyday problems and tools that give people more control over their work and their data.</p>
+        <p class="about-lead">I’m Michael Don Alaiza, a software developer and 2025 Information Technology graduate.</p>
+        <p>My work spans local-first tools, cross-platform applications, client websites, and quality assurance.</p>
         <div class="about-actions"><a class="button" href="#work">Explore my work <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a><p class="about-aside">And yes,<br>I develop in light mode.</p></div>
+        <figure class="about-work-preview">
+          <a href="#project-writing" aria-label="Explore Little by Little project"><img src="./assets/images/writing-desk.png" width="1440" height="900" alt="Little by Little writing desk with story navigation, a manuscript editor, and chapter context" loading="lazy" decoding="async"><span class="image-affordance">Explore Little by Little <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a>
+          <figcaption><span>Little by Little</span><span>Story navigation, manuscript, and chapter context</span></figcaption>
+        </figure>
         <details class="skills-details" id="profile-details">
         <summary>My profile, tools &amp; capabilities <span aria-hidden="true">+</span></summary>
+        <div class="disclosure-body"><div class="disclosure-body-inner">
         <div id="profile-content" class="profile-content">
           <div class="profile-identity">
             <img class="profile-photo" src="./assets/images/michael-alaiza.jpg" width="320" height="320" alt="Michael Don Alaiza’s GitHub profile picture" fetchpriority="high">
-            <div><h2>Michael Don<br>Alaiza</h2><p>Software developer</p><a href="https://github.com/Maxima01" target="_blank" rel="noopener noreferrer">@Maxima01 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
+            <div><h2>Michael Don<br>Alaiza</h2><p>Software developer</p><a href="https://github.com/Maxima01" target="_blank" rel="noopener noreferrer">@Maxima01 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a></div>
           </div>
           <dl class="profile-facts"><div><dt>Background</dt><dd>Information Technology graduate<br>Class of 2025</dd></div><div><dt>Focus</dt><dd>Web &amp; cross-platform software<br>Quality assurance</dd></div></dl>
           <div class="profile-history"><h3>A little background</h3><p>I graduated in Information Technology in 2025. My work brings together web development, cross-platform applications, and QA. Today, I’m building practical, local-first tools and continuing to grow through each project.</p></div>
@@ -118,15 +153,16 @@
           <div><dt>Currently learning</dt><dd>Deeper Rust systems development, Python, C#</dd></div>
         </dl>
         </div>
+        </div></div>
         </details>
-        <a class="text-link" href="https://github.com/Maxima01" target="_blank" rel="noopener noreferrer">Explore my GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+        <a class="text-link" href="https://github.com/Maxima01" target="_blank" rel="noopener noreferrer">Explore my GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
       </div>
     </section>
 
     <section class="hero wrap" id="everyday" aria-labelledby="hero-title">
       <h2 id="hero-title"><span class="type-line"><span>Software for</span></span><span class="type-line"><span>the everyday.</span></span></h2>
       <div class="hero-bottom">
-        <p>I’m Michael. I build practical, local-first tools,<br class="desktop-break"> from the system up, with AI in the process.</p>
+        <p>The work stays close: notes beside a draft, files on your device, and research in one workspace.</p>
       </div>
     </section>
 
@@ -138,48 +174,49 @@
       <div class="work-toolbar wrap">
         <div class="filters" role="group" aria-label="Filter projects" hidden>
           <button type="button" data-filter="all" aria-pressed="true">All projects <span>5</span></button>
-          <button type="button" data-filter="preview" aria-pressed="false">Live sites <span>3</span></button>
+          <button type="button" data-filter="preview" aria-pressed="false">Public links <span>3</span></button>
           <button type="button" data-filter="progress" aria-pressed="false">In development <span>4</span></button>
         </div>
         <p class="work-note">Client work and projects in progress.</p>
-        <p id="filter-status" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+        <p id="filter-status" class="filter-status" aria-live="polite" aria-atomic="true"></p>
       </div>
 
       <article class="project project-writing" id="project-writing" data-status="preview progress" aria-labelledby="writing-title">
         <div class="project-inner wrap">
           <div class="project-top">
             <h3 id="writing-title">Little by Little</h3>
-            <p class="project-status">Web &amp; desktop <span>Active & In Continuous development</span></p>
+            <p class="project-status">Web &amp; desktop <span>In active development</span></p>
           </div>
           <div class="project-layout">
             <figure class="project-visual">
-              <a href="./assets/images/writing-desk.png" class="image-link" aria-label="Open full-size Little by Little writing desk screenshot">
-                <img src="./assets/images/writing-desk.png" width="1440" height="900" alt="Little by Little writing desk with story navigation, a manuscript editor, and chapter context" loading="lazy">
+              <a href="./assets/images/writing-desk.png" class="image-link" aria-label="View full image: Little by Little writing desk screenshot">
+                <img src="./assets/images/writing-desk.png" width="1440" height="900" alt="Little by Little writing desk with story navigation, a manuscript editor, and chapter context" loading="lazy" decoding="async">
                 <span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span>
               </a>
               <figcaption>The writing desk, captured from the project’s own interface.</figcaption>
             </figure>
             <div class="project-copy">
               <p class="project-intro">A home for <br>the next chapter.</p>
-              <p>An offline-first writers workspace for manuscripts, characters, and research. I brought these tools together to keep story context close while writing, even without an internet connection.
+              <p>An offline-first writing workspace for manuscripts, characters, and research. I brought these tools together to keep story context close while writing, even without an internet connection.
               </p>
               <ul class="highlights">
                 <li>Local autosave, recovery, and backups help writers protect their work and revisit earlier drafts.</li>
                 <li>Linked notes keep character and world details beside the manuscript for quick reference.</li>
                 <li>PDF, EPUB, and Word exports make drafts easier to share and read in other tools.</li>
-                
               </ul>
               <ul class="tech-stack" aria-label="Little by Little technology stack"><li>TypeScript</li><li>React Native</li><li>Expo</li><li>Electron</li></ul>
-              <div class="project-links"><a class="text-link" href="https://little-by-little-delta.vercel.app" target="_blank" rel="noopener noreferrer">Visit project <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a class="text-link" href="https://github.com/Maxima01/Little-By-Little" target="_blank" rel="noopener noreferrer">Repository</a></div>
+              <div class="project-links"><a class="text-link" href="https://little-by-little-delta.vercel.app" target="_blank" rel="noopener noreferrer">Visit project <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="text-link" href="https://github.com/Maxima01/Little-By-Little" target="_blank" rel="noopener noreferrer">Repository<span class="sr-only"> (opens in a new tab)</span></a></div>
             </div>
           </div>
           <details class="project-details" open>
             <summary>Explore the workspace <span aria-hidden="true">+</span></summary>
+            <div class="disclosure-body"><div class="disclosure-body-inner">
             <div class="details-content screenshot-gallery">
-              <figure><a href="./assets/images/story-library.png" aria-label="Open full-size story library screenshot"><img src="./assets/images/story-library.png" width="1440" height="900" alt="Little by Little story library for organizing writing projects" loading="lazy"></a><figcaption>Story library keeps writing projects organized so it’s easy to return to a draft.</figcaption></figure>
-              <figure><a href="./assets/images/chapter-context.png" aria-label="Open full-size chapter context screenshot"><img src="./assets/images/chapter-context.png" width="1440" height="900" alt="Chapter context and notes alongside the Little by Little editor" loading="lazy"></a><figcaption>Chapter context puts relevant notes beside the editor to reduce switching between views.</figcaption></figure>
-              <figure><a href="./assets/images/save-history.png" aria-label="Open full-size save history screenshot"><img src="./assets/images/save-history.png" width="1440" height="900" alt="Saved versions and recovery history in Little by Little" loading="lazy"></a><figcaption>Save history offers a way back to an earlier draft when a revision needs rethinking.</figcaption></figure>
+              <figure><a href="./assets/images/story-library.png" aria-label="View full image: Little by Little story library"><img src="./assets/images/story-library.png" width="1440" height="900" alt="Little by Little story library for organizing writing projects" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>Story library keeps writing projects organized so it’s easy to return to a draft.</figcaption></figure>
+              <figure><a href="./assets/images/chapter-context.png" aria-label="View full image: Little by Little chapter context"><img src="./assets/images/chapter-context.png" width="1440" height="900" alt="Chapter context and notes alongside the Little by Little editor" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>Chapter context puts relevant notes beside the editor to reduce switching between views.</figcaption></figure>
+              <figure><a href="./assets/images/save-history.png" aria-label="View full image: Little by Little save history"><img src="./assets/images/save-history.png" width="1440" height="900" alt="Saved versions and recovery history in Little by Little" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>Save history offers a way back to an earlier draft when a revision needs rethinking.</figcaption></figure>
             </div>
+            </div></div>
           </details>
         </div>
       </article>
@@ -187,12 +224,12 @@
         <div class="project-inner wrap">
           <div class="project-top">
             <h3 id="sheetshift-title">SheetShift</h3>
-            <p class="project-status">Desktop &amp; CLI <span>In Continuous development</span></p>
+            <p class="project-status">Desktop &amp; CLI <span>In continuous development</span></p>
           </div>
           <div class="project-layout">
             <figure class="project-visual">
-              <a href="./assets/images/sheetshift.png" class="image-link" aria-label="Open full-size SheetShift interface preview">
-                <img src="./assets/images/sheetshift.png" width="1440" height="900" alt="SheetShift’s desktop interface preview showing its local document conversion workspace" loading="lazy">
+              <a href="./assets/images/sheetshift.png" class="image-link" aria-label="View full image: SheetShift interface preview">
+                <img src="./assets/images/sheetshift.png" width="1440" height="900" alt="SheetShift’s desktop interface preview showing its local document conversion workspace" loading="lazy" decoding="async">
                 <span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span>
               </a>
               <figcaption>Frontend preview from the project source. Conversion runs in the native app.</figcaption>
@@ -206,16 +243,18 @@
                 <li>Shared preferences and conversion history reduce repeated setup and keep past jobs easy to find.</li>
               </ul>
               <ul class="tech-stack" aria-label="SheetShift technology stack"><li>Rust</li><li>Tauri</li><li>React</li><li>TypeScript</li><li>SQLite</li></ul>
-              <div class="project-links"><a class="text-link" href="https://github.com/Maxima01/Sheetshift" target="_blank" rel="noopener noreferrer">View repository <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
+              <div class="project-links"><a class="text-link" href="https://github.com/Maxima01/Sheetshift" target="_blank" rel="noopener noreferrer">View repository <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a></div>
               <p class="credit">Co-developed with glavin.</p>
             </div>
           </div>
           <details class="project-details">
             <summary>Inside the build <span aria-hidden="true">+</span></summary>
+            <div class="disclosure-body"><div class="disclosure-body-inner">
             <div class="details-content two-column">
               <div><h4>One engine, two ways to work</h4><p>The Tauri interface and Rust CLI use the same conversion engine. That keeps behavior consistent whether a person is reviewing files or a script is processing a batch.</p></div>
-              <div><h4>What’s still ahead</h4><p>The documented roadmap includes parser isolation, more regression fixtures, and native packaging validation. These are ongoing priorities, not completed features.</p><a class="text-link" href="https://github.com/Maxima01/Sheetshift/blob/main/docs/GAPS.md" target="_blank" rel="noopener noreferrer">Read the development notes</a></div>
+              <div><h4>What’s still ahead</h4><p>The documented roadmap includes parser isolation, more regression fixtures, and native packaging validation. These are ongoing priorities, not completed features.</p><a class="text-link" href="https://github.com/Maxima01/Sheetshift/blob/main/docs/GAPS.md" target="_blank" rel="noopener noreferrer">Read the development notes<span class="sr-only"> (opens in a new tab)</span></a></div>
             </div>
+            </div></div>
           </details>
         </div>
       </article>
@@ -225,9 +264,9 @@
           <div class="project-top"><h3 id="coach-title">Coach JM Prime</h3><p class="project-status">Client website <span>Live</span></p></div>
           <div class="project-layout">
             <figure class="project-visual">
-              <a href="./assets/images/coach-jm-prime.png" class="image-link" aria-label="Open a full-page Coach JM Prime website capture">
-                <img src="./assets/images/coach-jm-prime-overview.png" width="1440" height="900" alt="Coach JM Prime website with a portrait, beginner fitness message, and yellow contact action" loading="lazy">
-                <span class="image-affordance">View full site capture <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span>
+              <a href="./assets/images/coach-jm-prime.png" class="image-link" aria-label="View full image: Coach JM Prime website capture">
+                <img src="./assets/images/coach-jm-prime-overview.png" width="1440" height="900" alt="Coach JM Prime website with a portrait, beginner fitness message, and yellow contact action" loading="lazy" decoding="async">
+                <span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span>
               </a>
               <figcaption>Live site capture. Select the image to see the full page.</figcaption>
             </figure>
@@ -237,25 +276,25 @@
               <ul class="highlights">
                 <li>The client’s own words, photos, and visual identity give visitors a personal introduction to the coach.</li>
                 <li>Dated photo comparisons show his progress over time, with a static fallback when JavaScript is unavailable.</li>
-                <li>Videos and common questions explain his approach; social links provide a direct way to contact him.</li>
-                <li>Features Tiktok embed to display his videos.</li>
+                <li>Common questions explain his approach, and social links provide a direct way to contact him.</li>
+                <li>An embedded TikTok feed brings his videos into the site.</li>
               </ul>
               <ul class="tech-stack" aria-label="Coach JM Prime technology stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Node.js</li><li>Cloudflare Workers</li></ul>
-              <div class="project-links"><a class="text-link" href="https://coachjmprimefitness.md01.workers.dev" target="_blank" rel="noopener noreferrer">Visit website <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
+              <div class="project-links"><a class="text-link" href="https://coachjmprimefitness.md01.workers.dev" target="_blank" rel="noopener noreferrer">Visit website <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a></div>
               <p class="credit">Client work. Source repository is private.</p>
             </div>
           </div>
-          <details class="project-details"><summary>Inside the build <span aria-hidden="true">+</span></summary><div class="details-content two-column"><div><h4>A real story</h4><p>The page uses the coach’s supplied photos and personal journey to explain his approach. It avoids invented results or testimonials.</p></div><div><h4>Portable by design</h4><p>Content is rendered into static HTML. The photo comparison, galleries, and long-form sections have useful fallbacks without JavaScript.</p></div></div></details>
+          <details class="project-details"><summary>Inside the build <span aria-hidden="true">+</span></summary><div class="disclosure-body"><div class="disclosure-body-inner"><div class="details-content two-column"><div><h4>A real story</h4><p>The page uses the coach’s supplied photos and personal journey to explain his approach. It avoids invented results or testimonials.</p></div><div><h4>Portable by design</h4><p>Content is rendered into static HTML. The photo comparison, galleries, and long-form sections have useful fallbacks without JavaScript.</p></div></div></div></div></details>
         </div>
       </article>
 
       <article class="project project-signal" id="project-signal" data-status="preview progress" aria-labelledby="signal-title">
         <div class="project-inner wrap">
-          <div class="project-top"><h3 id="signal-title">Signal Desk</h3><p class="project-status">Market Activity and Market Media Research space <span>In development</span></p></div>
+          <div class="project-top"><h3 id="signal-title">Signal Desk</h3><p class="project-status">Market research workspace <span>In development</span></p></div>
           <div class="project-layout">
             <figure class="project-visual">
-              <a href="./assets/images/signal-desk-overview.png" class="image-link" aria-label="Open the full-size Signal Desk concept overview">
-                <img src="./assets/images/signal-desk-overview.png" width="1440" height="900" alt="Signal Desk demo with a cross-market comparison chart, market leaders, and source-aware research panels" loading="lazy">
+              <a href="./assets/images/signal-desk-overview.png" class="image-link" aria-label="View full image: Signal Desk concept overview">
+                <img src="./assets/images/signal-desk-overview.png" width="1440" height="900" alt="Signal Desk demo with a cross-market comparison chart, market leaders, and source-aware research panels" loading="lazy" decoding="async">
                 <span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span>
               </a>
               <figcaption>Concept preview from the local demo. Prices, headlines, and scores shown are synthetic.</figcaption>
@@ -269,16 +308,16 @@
                 <li>Verified access and authenticator checks are designed to restrict the workspace to approved accounts.</li>
               </ul>
               <ul class="tech-stack" aria-label="Signal Desk technology stack"><li>TypeScript</li><li>React Native</li><li>Expo</li><li>Supabase</li><li>PostgreSQL</li><li>Netlify</li></ul>
-              <div class="project-links"><a class="text-link" href="https://signal-desk-nopklsq.netlify.app" target="_blank" rel="noopener noreferrer">View live sign-in <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
+              <div class="project-links"><a class="text-link" href="https://signal-desk-nopklsq.netlify.app" target="_blank" rel="noopener noreferrer">View live sign-in <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a></div>
               <p class="credit">The public site requires a provisioned account. The concept images below use the project’s local demo mode.</p>
             </div>
           </div>
-          <details class="project-details" open><summary>Explore the full concept <span aria-hidden="true">+</span></summary><div class="details-content screenshot-gallery concept-gallery">
-            <figure><a href="./assets/images/signal-desk-markets.png" aria-label="Open Signal Desk markets concept screenshot"><img src="./assets/images/signal-desk-markets.png" width="1440" height="900" alt="Signal Desk demo markets view with categories and comparable assets" loading="lazy"></a><figcaption>Markets groups assets by category to make browsing and comparison easier.</figcaption></figure>
-            <figure><a href="./assets/images/signal-desk-trends.png" aria-label="Open Signal Desk trend tracker concept screenshot"><img src="./assets/images/signal-desk-trends.png" width="1440" height="900" alt="Signal Desk demo trend tracker with grouped themes and attention scores" loading="lazy"></a><figcaption>Trend tracker groups related stories to help readers spot themes receiving attention.</figcaption></figure>
-            <figure><a href="./assets/images/signal-desk-rumor.png" aria-label="Open Signal Desk rumor mill concept screenshot"><img src="./assets/images/signal-desk-rumor.png" width="1440" height="900" alt="Signal Desk demo rumor mill separating market reporting and analysis" loading="lazy"></a><figcaption>Rumor mill keeps source context visible so readers can distinguish reporting from discussion.</figcaption></figure>
-            <figure><a href="./assets/images/signal-desk-watchlist.png" aria-label="Open Signal Desk watchlist concept screenshot"><img src="./assets/images/signal-desk-watchlist.png" width="1440" height="900" alt="Signal Desk demo watchlist with three saved assets" loading="lazy"></a><figcaption>Watchlist saves selected assets so readers can return to them without searching again.</figcaption></figure>
-          </div></details>
+          <details class="project-details" open><summary>Explore the full concept <span aria-hidden="true">+</span></summary><div class="disclosure-body"><div class="disclosure-body-inner"><div class="details-content screenshot-gallery concept-gallery">
+            <figure><a href="./assets/images/signal-desk-markets.png" aria-label="View full image: Signal Desk markets concept screenshot"><img src="./assets/images/signal-desk-markets.png" width="1440" height="900" alt="Signal Desk demo markets view with categories and comparable assets" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>Markets groups assets by category to make browsing and comparison easier.</figcaption></figure>
+            <figure><a href="./assets/images/signal-desk-trends.png" aria-label="View full image: Signal Desk trend tracker concept screenshot"><img src="./assets/images/signal-desk-trends.png" width="1440" height="900" alt="Signal Desk demo trend tracker with grouped themes and attention scores" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>Trend tracker groups related stories to help readers spot themes receiving attention.</figcaption></figure>
+            <figure><a href="./assets/images/signal-desk-rumor.png" aria-label="View full image: Signal Desk rumor mill concept screenshot"><img src="./assets/images/signal-desk-rumor.png" width="1440" height="900" alt="Signal Desk demo rumor mill separating market reporting and analysis" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>Rumor mill keeps source context visible so readers can distinguish reporting from discussion.</figcaption></figure>
+            <figure><a href="./assets/images/signal-desk-watchlist.png" aria-label="View full image: Signal Desk watchlist concept screenshot"><img src="./assets/images/signal-desk-watchlist.png" width="1440" height="900" alt="Signal Desk demo watchlist with three saved assets" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>Watchlist saves selected assets so readers can return to them without searching again.</figcaption></figure>
+          </div></div></div></details>
         </div>
       </article>
       <article class="project project-osmanthus" id="project-osmanthus" data-status="progress" aria-labelledby="osmanthus-title">
@@ -286,8 +325,8 @@
           <div class="project-top"><h3 id="osmanthus-title">Osmanthus</h3><p class="project-status">Rust desktop &amp; CLI <span>Preliminary build · In development</span></p></div>
           <div class="project-layout">
             <figure class="project-visual">
-              <a href="./assets/images/osmanthus-behavior.png" class="image-link" aria-label="Open full-size Osmanthus behavior view">
-                <img src="./assets/images/osmanthus-behavior.png" width="1180" height="820" alt="Osmanthus desktop showing a synthetic installer process tree, recorded activity, and evidence-linked persistence review" loading="lazy">
+              <a href="./assets/images/osmanthus-behavior.png" class="image-link" aria-label="View full image: Osmanthus behavior view">
+                <img src="./assets/images/osmanthus-behavior.png" width="1180" height="820" alt="Osmanthus desktop showing a synthetic installer process tree, recorded activity, and evidence-linked persistence review" loading="lazy" decoding="async">
                 <span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span>
               </a>
               <figcaption>Current desktop foundation, captured with the project’s synthetic installer recording. Live collectors are offline.</figcaption>
@@ -301,14 +340,14 @@
                 <li>SQLite history reopens saved recordings and inspection reports. Review signals link back to their source evidence.</li>
               </ul>
               <ul class="tech-stack" aria-label="Osmanthus technology stack"><li>Rust</li><li>Slint</li><li>SQLite</li><li>Serde</li><li>Cargo</li></ul>
-              <div class="project-links"><a class="text-link" href="https://github.com/Maxima01/osmanthus" target="_blank" rel="noopener noreferrer">Repository <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a class="text-link" href="https://github.com/Maxima01/osmanthus/blob/main/docs/BUILD_STATUS.md" target="_blank" rel="noopener noreferrer">Build status</a></div>
+              <div class="project-links"><a class="text-link" href="https://github.com/Maxima01/osmanthus" target="_blank" rel="noopener noreferrer">Repository <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="text-link" href="https://github.com/Maxima01/osmanthus/blob/main/docs/BUILD_STATUS.md" target="_blank" rel="noopener noreferrer">Build status<span class="sr-only"> (opens in a new tab)</span></a></div>
               <p class="credit">Foundation stage as of 13 November 2026. Replay and static inspection are implemented; live Windows telemetry, authenticated service transport, and response tools are planned.</p>
             </div>
           </div>
-          <details class="project-details"><summary>Inside the current build <span aria-hidden="true">+</span></summary><div class="details-content screenshot-gallery concept-gallery">
-            <figure><a href="./assets/images/osmanthus-timeline.png" aria-label="Open Osmanthus recording timeline screenshot"><img src="./assets/images/osmanthus-timeline.png" width="1180" height="820" alt="Osmanthus timeline of synthetic process, file, network, and persistence events with source evidence identifiers" loading="lazy"></a><figcaption>The timeline orders recorded events and preserves their evidence IDs. These events are synthetic, not live observations.</figcaption></figure>
-            <figure><a href="./assets/images/osmanthus-inspection.png" aria-label="Open Osmanthus file inspection screenshot"><img src="./assets/images/osmanthus-inspection.png" width="1180" height="820" alt="Osmanthus read-only PE file inspection showing a SHA-256 hash, imports, URL clues, and analysis limitations" loading="lazy"></a><figcaption>Static inspection reads a local file without executing it. Findings support review; they do not establish that a file is safe.</figcaption></figure>
-          </div><div class="details-content two-column"><div><h4>Built and checked</h4><p>The workspace separates the domain, replay engine, static analysis, storage, and application layers. The current build records 12 passing tests covering replay, storage, parsing, protocol limits, and desktop rendering.</p></div><div><h4>What comes next</h4><p>Live ETW collection and a hardened Windows service are the next observation layer. Quarantine, isolated execution, packaging, and distribution remain later work.</p></div></div></details>
+          <details class="project-details"><summary>Inside the current build <span aria-hidden="true">+</span></summary><div class="disclosure-body"><div class="disclosure-body-inner"><div class="details-content screenshot-gallery concept-gallery">
+            <figure><a href="./assets/images/osmanthus-timeline.png" aria-label="View full image: Osmanthus recording timeline screenshot"><img src="./assets/images/osmanthus-timeline.png" width="1180" height="820" alt="Osmanthus timeline of synthetic process, file, network, and persistence events with source evidence identifiers" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>The timeline orders recorded events and preserves their evidence IDs. These events are synthetic, not live observations.</figcaption></figure>
+            <figure><a href="./assets/images/osmanthus-inspection.png" aria-label="View full image: Osmanthus file inspection screenshot"><img src="./assets/images/osmanthus-inspection.png" width="1180" height="820" alt="Osmanthus read-only PE file inspection showing a SHA-256 hash, imports, URL clues, and analysis limitations" loading="lazy" decoding="async"><span class="image-affordance">View full image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></span></a><figcaption>Static inspection reads a local file without executing it. Findings support review; they do not establish that a file is safe.</figcaption></figure>
+          </div><div class="details-content two-column"><div><h4>Built and checked</h4><p>The workspace separates the domain, replay engine, static analysis, storage, and application layers. The current build records 12 passing tests covering replay, storage, parsing, protocol limits, and desktop rendering.</p></div><div><h4>What comes next</h4><p>Live ETW collection and a hardened Windows service are the next observation layer. Quarantine, isolated execution, packaging, and distribution remain later work.</p></div></div></div></div></details>
         </div>
       </article>
     </section>
@@ -320,6 +359,7 @@
           <p class="approach-statement">I start with an idea, then give it more context as it grows. I work through the low-level system details before shaping the bigger design.</p>
           <details class="approach-map-details" id="approach-map-details" open>
             <summary>My development map <span aria-hidden="true">+</span></summary>
+            <div class="disclosure-body"><div class="disclosure-body-inner">
             <div class="development-map" id="development-map">
               <h2>How an idea<br>takes shape.</h2>
               <p class="map-intro">Start with the problem. Build from the foundations.</p>
@@ -332,14 +372,13 @@
               </ol>
               <p class="map-return"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9h10a5 5 0 0 1 0 10h-4M6 9l4-4M6 9l4 4"/></svg> What I learn becomes the next context.</p>
             </div>
+            </div></div>
           </details>
-          <div class="process-list">
-            <div><h3>Give the idea context</h3><p>Clarify the problem and gather the requirements, references, and constraints that make the next decision more informed.</p></div>
-            <div><h3>Understand the parts</h3><p>Work through data, logic, and how the pieces connect. Build a foundation that makes the higher-level design easier to reason about.</p></div>
-            <div><h3>Build with AI</h3><p>Use AI tools to help explore and implement the idea, adding context and direction as the system takes shape.</p></div>
-            <div><h3>Test, learn, refine</h3><p>Bring a quality-assurance mindset to the result. Check the behavior, revisit assumptions, and improve the next iteration.</p></div>
-          </div>
         </div>
+        <article class="approach-example">
+          <h3>Trace each signal to its source</h3>
+          <div><p>In Osmanthus, a reused process ID does not imply the same process. Replay preserves stable identities and links review signals back to their evidence.</p><a class="text-link" href="#project-osmanthus">Explore Osmanthus <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a></div>
+        </article>
       </div>
     </section>
 
@@ -347,16 +386,22 @@
       <div class="wrap">
         <div class="contact-top"><p>Have a project in mind,<br>or a place on your team?</p><a class="back-top" href="#top">Back to top <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4M5 11l7-7 7 7"/></svg></a></div>
         <h2>Let’s build<br>what’s next.</h2>
-        <div class="contact-links"><a class="button button-light" href="https://www.linkedin.com/in/michael-don-alaiza-b566ab263/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a href="https://github.com/Maxima01" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://discord.com/users/413614576672964608" target="_blank" rel="noopener noreferrer">Discord</a></div>
-        <div class="footer-bottom"><p>Michael Don Alaiza</p><p>Made with intention. Always evolving.</p><p>© <span id="year">2026</span></p></div>
+        <div class="contact-links"><a class="button button-light" href="https://www.linkedin.com/in/michael-don-alaiza-b566ab263/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a href="https://github.com/Maxima01" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a><a href="https://discord.com/users/413614576672964608" target="_blank" rel="noopener noreferrer">Discord<span class="sr-only"> (opens in a new tab)</span></a></div>
+        <div class="footer-bottom"><p>Michael Don Alaiza</p><p>Practical software, from the system up.</p><p>© <span id="year">2026</span></p></div>
       </div>
     </footer>
   </main>
   </div>
-  <dialog class="image-viewer" id="image-viewer" aria-labelledby="viewer-title" aria-describedby="viewer-caption">
+  <dialog class="image-viewer" id="image-viewer" aria-labelledby="viewer-title" aria-describedby="viewer-caption viewer-position viewer-help">
     <div class="viewer-surface">
       <div class="viewer-toolbar"><h2 id="viewer-title">Project image</h2><button type="button" id="viewer-close" autofocus>Close image <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div>
       <figure class="viewer-figure"><img id="viewer-image" alt=""><figcaption id="viewer-caption"></figcaption></figure>
+      <nav class="viewer-navigation" id="viewer-navigation" aria-label="Browse project images" hidden>
+        <button type="button" id="viewer-previous" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <span class="viewer-position" id="viewer-position"></span>
+        <button type="button" id="viewer-next" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+        <span class="sr-only" id="viewer-announcement" aria-live="polite" aria-atomic="true"></span>
+      </nav>
       <p class="viewer-help">Press Esc or click outside the image to close.</p>
     </div>
   </dialog>

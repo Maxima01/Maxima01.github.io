@@ -15,7 +15,10 @@ if (!/<!doctype html>/i.test(html)) fail('index.html needs an HTML5 doctype.');
 if (!/<html\b[^>]*\blang=["'][^"']+["']/i.test(html)) fail('The document needs a language.');
 if (!/<title>[^<]+<\/title>/i.test(html)) fail('The document needs a title.');
 if (!/<meta\b[^>]*\bname=["']viewport["']/i.test(html)) fail('The document needs a mobile viewport meta tag.');
-if ([...html.matchAll(/<h1\b/gi)].length !== 1) fail('Use exactly one primary h1 heading.');
+// The first-visit intro owns its own h1 while open, but starts hidden outside the page's active heading structure.
+const hiddenIntro = html.match(/<section\b(?=[^>]*\bid=["']portfolio-intro["'])(?=[^>]*\shidden(?=[\s=>]))[^>]*>[\s\S]*?<\/section>/i);
+const pageHeadingsHtml = hiddenIntro ? html.replace(hiddenIntro[0], '') : html;
+if ([...pageHeadingsHtml.matchAll(/<h1\b/gi)].length !== 1) fail('Use exactly one primary h1 heading in the visible page.');
 for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
   if (!/\balt=["'][^"']*["']/i.test(match[0])) fail(`Image is missing alt text: ${match[0]}`);
 }
@@ -55,7 +58,7 @@ try {
   for (const match of css.matchAll(/url\(\s*["']?([^\s"')]+)["']?\s*\)/g)) await checkReference(match[1], cssPath);
 } catch { fail('Missing styles.css.'); }
 
-const scripts = ['script.js', 'assets/js/particle-mark.js', ...(await readdir(join(root, 'scripts'))).filter((file) => file.endsWith('.mjs')).map((file) => `scripts/${file}`)];
+const scripts = ['script.js', 'assets/js/particle-mark.js', 'assets/js/entry-atmosphere.js', ...(await readdir(join(root, 'scripts'))).filter((file) => file.endsWith('.mjs')).map((file) => `scripts/${file}`)];
 for (const file of scripts) {
   const result = spawnSync(process.execPath, ['--check', join(root, file)], { encoding: 'utf8' });
   if (result.status !== 0) fail(`JavaScript syntax check failed: ${file}\n${result.stderr || result.error?.message || ''}`);
